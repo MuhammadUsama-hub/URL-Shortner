@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL-Shortner</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/font/bootstrap-icons.css">
+    <title>link-Shortner</title>
 </head>
 <body>
-    <h1>Assalam o Alikum</h1>
+    <div class="container-fluid">
+        <div class="row bg-light p-3">
+            <div class="col-md-3 ">
+                <h2>Link Crunch</h2>
+            </div>
+            <div class="col-md-6 text-center ">
+                <% if (locals.personName) { %>
+                    <h3>Welcome, <%= personName %></h3>
+                <% } %>
+                
+            </div>
+            <div class="col-md-3">
+                <form action="/users/login" method="get">
+                    <div class="d-flex  justify-content-center"><button type="submit" class="btn btn-dark p-2 fs-6 w-50 rounded-5">Log Out</button></div>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="row mt-2 bg-light d-flex align-items-center" style="height: 50vh;">
+            <div class="col-md-12  ">
+<form action="/url/" method="post" class="d-flex justify-content-center">
+    <div style="width: 60%;"><input class="form-control form-control-lg rounded-5" type="text" placeholder="Provide Link" aria-label=".form-control-lg example" name="body" required></div>
+    <div  style=" width: 30%;" ><button type="submit" class="btn btn-dark w-30  fs-5 rounded-5 ms-3" style="width: 50%;">Generate</button></div>
+    
+</form>
+               
+            </div>
+        </div>
+<div class="row">
+    <div class="col p-4">  
+        <% if (locals.allUrls) { %>
+            <table class="table">
+                <thead>
+                    <th scope="col">Sr</th>
+                    <th scope="col" colspan="2">Short Id</th>
+                    <th scope="col" colspan="2">Redirect</th>
+                    <th scope="col">Clicks</th>
+                    <th></th>
+
+                 </thead>
+                 <tbody>
+                    <% allUrls.forEach((url,index) => { %>
+                        <tr>
+                     <th scope="row"><%= index+1 %></th>
+                     <td colspan="2" ><a href="http://localhost:8000/url/<%= url.shortId %>" target="_blank" rel="noopener noreferrer"><%=url.shortId  %></a></td>
+                     <td colspan="2"><%=url.redirectUrl  %></td>
+                     <td><%=url.visitHistory.length  %></i></td> 
+                     <td ><form action="/url/delLink/<%=url.shortId%>" method="post">
+                        <button type="submit" class="btn btn-light"><i class="bi bi-trash3-fill text-end"></i></button>
+                     </form></td>
+                    </tr>
+                    <% }) %>
+                 </tbody>
+               </table>
+        <% } %>    
+    </div>
+</div>
+
+    </div>
+
+    <script src="/js/bootstrap.bundle.js"></script>
 </body>
 </html>

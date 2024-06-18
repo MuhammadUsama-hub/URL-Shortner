@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <title>SignUp</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div
+        class="row d-flex justify-content-center min-vh-100 align-items-center"
+      >
+        <div
+          class="col-md-4 shadow-sm p-5 bg-secondary border border-black rounded-4"
+        >
+          <form action="/users/signup" method="post">
+            <h2 class="mb-3 text-center text-light">Sign Up</h2>
+            <div class="mb-3">
+              <label for="exampleInputName" class="form-label text-light fs-5"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                class="form-control text-light border border-black bg-secondary border-start-0 border-top-0 border-end-0 rounded-0 focus-ring px-1 border-white"
+                id="exampleInputName"
+                aria-describedby="emailHelp"
+                style="
+                  --bs-focus-ring-color: rgba(var(--bs-secondary-rgb), 0.25);
+                "
+                name="fullName"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label text-light fs-5"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control text-light border border-black bg-secondary border-start-0 border-top-0 border-end-0 rounded-0 focus-ring px-1 border-white"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                style="
+                  --bs-focus-ring-color: rgba(var(--bs-secondary-rgb), 0.25);
+                "
+                name="email"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                for="exampleInputPassword1"
+                class="form-label text-light fs-5"
+                >Create Password</label
+              >
+              <input
+                type="password"
+                class="form-control text-light border border-black bg-secondary border-start-0 border-top-0 border-end-0 rounded-0 focus-ring px-1 border-white"
+                id="exampleInputPassword1"
+                style="
+                  --bs-focus-ring-color: rgba(var(--bs-secondary-rgb), 0.25);
+                "
+                name="password"
+                required
+              />
+            </div>
+            <div class="mb-2 d-flex justify-content-center">
+              <button
+                type="submit"
+                class="btn btn-light p-2 w-50 fs-5 rounded-5"
+              >
+                SignUp
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.js"></script>
+  </body>
+</html>
