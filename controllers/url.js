@@ -26,7 +26,7 @@ async function handleCreateShortUrl(req, res) {
 async function handleRedirectUrl(req, res) {
     const userInfo = req.body.user;
     if (!userInfo)
-        return res.redirect('login');
+        return res.redirect("login");
     const shortID = req.params.id;
     if (!shortID)
         return res.status(400).json({ Error: "Id is required" });
@@ -61,11 +61,13 @@ async function handleRenderAllUrls(req, res) {
 }
 // Delelete a single Row
 async function handleDeleteLink(req, res) {
-    console.log(`short Id : ${req.params.id}`);
     const userInfo = req.body.user;
     if (!userInfo)
-        return res.redirect('login');
-    await URL.findOneAndDelete({ createdBy: userInfo._id, shortId: req.params.id });
+        return res.redirect("login");
+    await URL.findOneAndDelete({
+        createdBy: userInfo._id,
+        shortId: req.params.id,
+    });
     const getAllUrls = await URL.find({ createdBy: userInfo._id });
     return res
         .status(200)
