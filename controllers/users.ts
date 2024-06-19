@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Users } from "../models/users.js";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { setUser, getUser } from "../services/auth.js";
 import { URL } from "../models/url.js";
 import { get } from "mongoose";
@@ -25,9 +25,9 @@ async function handleCheckLogin(req: Request, res: Response) {
   if (!getUser)
     return res.status(404).render("login", { error: "Invalid credentials" });
 
-  const sessionId = uuidv4();
-  setUser(sessionId, getUser);
-  res.cookie("uuid", sessionId);
+  // const sessionId = uuidv4();
+  const token = setUser(getUser);
+  res.cookie("token", token);
 
   const getAllUrls = await URL.find({ createdBy: getUser._id });
   const userName = getUser.name;
